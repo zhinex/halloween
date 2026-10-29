@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#160b2b">
+  <title>A Little Halloween Surprise for Angie 🎃</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="surprise-overlay" id="surpriseOverlay">
+  <div class="surprise-card">
+    <div class="surprise-decor">🎃 🦇 👻</div>
+
+    <h1>HAPPY HALLOWEEN!</h1>
+
+    <button id="openSurpriseButton" class="open-surprise-button">
+      🎃 What is this??
+    </button>
+
+  </div>
+</div>
+  <div class="stars" aria-hidden="true">✦ · ✧ · ✦ · · ✧ · ✦ · ✧ · · ✦</div>
+  <main class="app">
+    <section class="screen active" id="welcome">
+      <div class="moon">🌕</div>
+      <div class="floaties" aria-hidden="true"><span>🦇</span><span>👻</span><span>🎃</span></div>
+      <p class="eyebrow">A LITTLE HALLOWEEN SURPRISE</p>
+      <h1>Just for<br><span>Angie</span> ♡</h1>
+      <p class="copy">Boo! 👻 I've got a little surprise just for you...</p>
+      <p class="copy">Are you ready?</p>
+      <button class="primary" data-go="choice">🎃 Enter if you dare!</button>
+    </section>
+
+    <section class="screen" id="choice">
+      <div class="mini-pumpkin">🎃</div>
+      <p class="eyebrow">THE BIG QUESTION</p>
+      <h1>Trick or Treat?</h1>
+      <p class="copy">Choose wisely, Angie...<br>One choice might make you smile.<br>The other might be a little scary (for me). 👀</p>
+      <div class="choices">
+        <button class="choice trick" data-go="trick-warning"><span>👻</span><strong>TRICK</strong><small>Hehe... let's see if you're brave enough!</small></button>
+        <button class="choice treat" data-go="treat"><span>🍬</span><strong>TREAT</strong><small>Something sweet is waiting for you!</small></button>
+      </div>
+    </section>
+
+    <section class="screen" id="trick-warning">
+      <div class="ghost">👻</div>
+      <h1 class="smaller">Hehe... are you sure?</h1>
+      <p class="copy">The trick might be a bit spooky...<br>Are you really brave enough?</p>
+      <button class="primary purple" id="scareButton">YES, I'M BRAVE!</button>
+      <button class="primary red" data-go="choice">Maybe I'll choose the treat...</button>
+    </section>
+
+    <section class="screen" id="scare">
+      <div class="scare-face" id="scareFace">
+  <img src="trick-photo.png" alt="A spooky Halloween surprise!">
+</div>
+      <h1 class="scare-title">BOO!</h1>
+      <p class="copy">HAHAHAHA! You've been tricked! 👻<br>Don't blame me... you chose this yourself. 🎃</p>
+      <button class="primary purple" data-go="choice">Back to Trick or Treat</button>
+    </section>
+
+    <section class="screen" id="treat">
+      <div class="ghost">👻</div>
+      <h1 class="smaller">Awww! You chose Treat!</h1>
+      <p class="copy">Good choice, Angie! 🍬<br>I have a little gift for you.</p>
+      <div class="gift" aria-hidden="true">🎁</div>
+      <button class="primary" data-go="gift">Open your gift 🎁</button>
+    </section>
+
+    <section class="screen" id="gift">
+      <div class="sparkles" aria-hidden="true">✦ ✨ ✦</div>
+      <h1 class="smaller">Your Roblox gift is ready!</h1>
+      <p class="copy">A little treat, just for you. 🧡</p>
+      <div class="gift-card">
+        <div class="roblox-icon">
+    <img src="roblox-icon.png" alt="Roblox logo">
+  </div>
+        <p class="eyebrow">ROBLOX GIFT CARD CODE</p>
+        <div class="code" id="giftCode">RBG3KRC3TEDUCDB5</div>
+        <button class="primary purple" id="copyButton">Copy code ▢</button>
+        <p class="tiny" id="copyStatus" aria-live="polite"></p>
+      </div>
+      <p class="copy closing">Happy Halloween, Angie! 🧡<br>Hope this little gift makes you smile, even though I know you're secretly mad at me. 🤭</p>
+      <button class="text-button" data-go="goodbye">One last thing...</button>
+    </section>
+
+    <section class="screen" id="goodbye">
+      <div class="ghost">👻</div>
+      <p class="eyebrow">BEFORE YOU GO...</p>
+      <h1 class="smaller">Happy Halloween,<br><span>Angie!</span> 🎃</h1>
+      <p class="copy">Thanks for visiting my little Halloween world.<br>
+        <br>I hope you have a lovely Halloween! Stay safe, enjoy your treats, and don't let the ghosts steal your candy. 👻
+        <br><br>And plss, don't be mad at me, ok? 🥹👉🏻👈🏻 <br>I really do want to give this to you, so please don't reject the code, alright?</p>
+      <p class="signature">— from me (Fairy🧚) ♡</p>
+      <button class="primary purple" data-go="welcome">Play again</button>
+    </section>
+  </main>
+  <div class="music-control">
+  <audio
+  id="backgroundMusic"
+  src="halloween-music.mp3"
+  loop
+  preload="auto"
+  autoplay
+></audio>
+
+  <button
+    id="musicButton"
+    class="music-button"
+    type="button"
+    aria-pressed="false"
+  >
+    🎵 Play Music
+  </button>
+</div>
+  <footer>BOO!</footer>
+  <script src="script.js"></script>
+</body>
+</html>

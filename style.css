@@ -1,0 +1,588 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap');
+
+/* ==========================================================
+   Color
+   ========================================================== */
+:root {
+  --bg: #10071e;
+  --panel: #1c0e32;
+  --purple: #9d56cf;
+  --orange: #ff9b42;
+  --cream: #fff0dc;
+  --muted: #d9c8e9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ==========================================================
+   Layout and Background
+   ========================================================== */
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 22px;
+  overflow-x: hidden;
+  background: radial-gradient(ellipse at 50% 0%, #35104c 0%, #180a2a 42%, #0c0615 100%);
+  color: var(--cream);
+  font-family: 'Nunito', system-ui, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Star Background */
+body:before,
+body:after {
+  content: "✦  ·   ✧     ·   ✦";
+  position: fixed;
+  top: 12%;
+  left: 4%;
+  color: #ffb85c;
+  opacity: .55;
+  letter-spacing: 12px;
+  pointer-events: none;
+  transform: rotate(-18deg);
+}
+
+body:after {
+  top: auto;
+  left: auto;
+  right: 2%;
+  bottom: 13%;
+  color: #c18cff;
+  transform: rotate(15deg);
+}
+
+.stars {
+  position: fixed;
+  top: 3%;
+  right: 7%;
+  color: #ffc16a;
+  opacity: .45;
+  letter-spacing: 12px;
+  pointer-events: none;
+}
+
+.app {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 520px);
+}
+
+/* ==========================================================
+   Screen
+   ========================================================== */
+.screen {
+  display: none;
+  position: relative;
+  overflow: hidden;
+  min-height: 610px;
+  padding: 35px 24px 28px;
+  text-align: center;
+  border: 1px solid #65308a;
+  border-radius: 28px;
+  background: linear-gradient(160deg, rgba(43, 19, 66, .96), rgba(17, 8, 31, .98));
+  box-shadow: 0 0 45px #8a35b52b, inset 0 0 35px #a05bd10d;
+  animation: appear .45s ease;
+}
+
+.screen:before {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  border: 1px solid #a66ac62b;
+  border-radius: 21px;
+  pointer-events: none;
+}
+
+.screen.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==========================================================
+   Text
+   ========================================================== */
+h1 {
+  margin: 0 0 20px;
+  font-family: 'Fredoka', system-ui, sans-serif;
+  font-size: clamp(2.5rem, 9vw, 4rem);
+  line-height: 1.03;
+  color: var(--orange);
+  text-shadow: 0 3px 0 #6e2c70;
+}
+
+h1 span {
+  color: #ffb8ce;
+}
+
+h1.smaller {
+  margin: 16px 0;
+  font-size: clamp(2rem, 7vw, 2.7rem);
+}
+
+.eyebrow {
+  margin: 7px 0 12px;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: #ffbd70;
+}
+
+.copy {
+  max-width: 360px;
+  margin: 8px 0;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--cream);
+}
+
+.hint,
+.tiny {
+  font-size: .75rem;
+  line-height: 1.5;
+  color: #bfa8d2;
+}
+
+.tiny {
+  margin: 10px 0 0;
+}
+
+.closing {
+  margin-top: 14px;
+}
+
+.signature {
+  margin: 15px 0;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.1rem;
+  color: #ffb4d2;
+}
+
+/* ==========================================================
+   Button
+   ========================================================== */
+.primary,
+.choice {
+  border: 0;
+  cursor: pointer;
+  font-family: 'Fredoka', system-ui, sans-serif;
+  font-weight: 600;
+  transition: transform .18s, filter .18s;
+  touch-action: manipulation;
+}
+
+.primary {
+  max-width: 100%;
+  margin-top: 24px;
+  padding: 15px 24px;
+  border-radius: 999px;
+  font-size: 1rem;
+  background: linear-gradient(135deg, #ffbd61, #ff863d);
+  color: #29113a;
+  box-shadow: 0 5px 0 #a44a37, 0 0 22px #ff9b4230;
+}
+
+.primary.purple {
+  background: linear-gradient(135deg, #b76be0, #7539a8);
+  color: white;
+  box-shadow: 0 5px 0 #49205f, 0 0 22px #b76be030;
+}
+
+.primary:hover,
+.choice:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.08);
+}
+
+.primary:active,
+.choice:active {
+  transform: translateY(1px);
+}
+
+.text-button {
+  margin-top: 22px;
+  padding: 10px;
+  border: 0;
+  background: transparent;
+  color: #d7a4f3;
+  font: 600 .9rem 'Nunito', sans-serif;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ==========================================================
+   Pages (Trick / Treat)
+   ========================================================== */
+.choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+  margin-top: 25px;
+}
+
+.choice {
+  min-height: 170px;
+  padding: 18px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid #8e4eaf;
+  border-radius: 20px;
+  background: #160a27;
+  color: var(--cream);
+}
+
+.choice span {
+  font-size: 2rem;
+}
+
+.choice strong {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.65rem;
+  color: #c88aff;
+}
+
+.choice small {
+  font-size: .8rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.choice.treat {
+  border-color: #ff9b42;
+}
+
+.choice.treat strong {
+  color: #ffad4f;
+}
+
+/* ==========================================================
+   Icon
+   ========================================================== */
+.moon {
+  margin-bottom: 10px;
+  font-size: 3.3rem;
+  filter: drop-shadow(0 0 20px #ffae59);
+}
+
+.mini-pumpkin {
+  margin-bottom: 8px;
+  font-size: 2.5rem;
+}
+
+.floaties {
+  display: flex;
+  gap: 28px;
+  margin-bottom: 18px;
+  font-size: 1.8rem;
+}
+
+.floaties span:nth-child(odd) {
+  animation: bob 3s ease-in-out infinite;
+}
+
+.floaties span:nth-child(even) {
+  animation: bob 3.7s ease-in-out infinite reverse;
+}
+
+.ghost {
+  font-size: 4rem;
+  filter: drop-shadow(0 0 18px #b86be0);
+  animation: bob 3s ease-in-out infinite;
+}
+
+/* ==========================================================
+   Pages Scare
+   ========================================================== */
+.scare-face {
+  font-size: 7rem;
+  filter: drop-shadow(0 0 22px #b33c73);
+  animation: jump .65s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+.scare-title {
+  margin: 10px 0 !important;
+  font-size: 4rem !important;
+  color: #db9bff;
+}
+
+/* ==========================================================
+   Pages Gift
+   ========================================================== */
+.gift {
+  margin: 24px 0 4px;
+  font-size: 6rem;
+  filter: drop-shadow(0 0 20px #ff9b42);
+  animation: bob 2.8s ease-in-out infinite;
+}
+
+.sparkles {
+  margin-bottom: 15px;
+  font-size: 2rem;
+  letter-spacing: 12px;
+  color: #ffc16a;
+}
+
+.gift-card {
+  width: 100%;
+  max-width: 340px;
+  margin: 15px 0;
+  padding: 22px 16px;
+  border: 1px solid #a75bc9;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #35164d, #1a0b2a);
+  box-shadow: 0 0 28px #a54dd52a;
+}
+
+.gift-card .eyebrow {
+  font-size: .65rem;
+  letter-spacing: 1.7px;
+}
+
+.gift-card .primary {
+  margin-top: 13px;
+  padding: 12px 22px;
+}
+
+.roblox-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.roblox-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.code {
+  margin: 16px 0 0;
+  padding: 14px 7px;
+  border-radius: 12px;
+  background: #f5dfff;
+  color: #321441;
+  font-weight: 900;
+  letter-spacing: 1px;
+  overflow-wrap: anywhere;
+}
+
+footer {
+  margin-top: 18px;
+  text-align: center;
+  font-size: .72rem;
+  letter-spacing: 1px;
+  color: #9876ad;
+}
+
+/* ==========================================================
+   Animation
+   ========================================================== */
+@keyframes appear {
+  from { opacity: 0; transform: translateY(8px) scale(.99); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes bob {
+  50% { transform: translateY(-8px) rotate(7deg); }
+}
+
+@keyframes jump {
+  0%   { transform: scale(.1) rotate(-18deg); opacity: 0; }
+  65%  { transform: scale(1.2) rotate(5deg); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+/* ==========================================================
+   Responsive: Small
+   ========================================================== */
+@media (max-width: 390px) {
+  body {
+    padding: 12px;
+  }
+
+  .screen {
+    min-height: 590px;
+    padding: 28px 16px 22px;
+  }
+
+  .choices {
+    gap: 8px;
+  }
+
+  .choice {
+    min-height: 165px;
+    padding: 14px 8px;
+  }
+
+  .choice strong {
+    font-size: 1.4rem;
+  }
+
+  .copy {
+    font-size: .93rem;
+  }
+}
+
+/* Close Animation */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *:before,
+  *:after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Background music button */
+.music-control {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 10;
+}
+
+.music-button {
+  border: 1px solid #b77be0;
+  border-radius: 999px;
+  padding: 11px 15px;
+  background: rgba(28, 14, 50, 0.96);
+  color: #fff0dc;
+  font: 700 0.85rem 'Nunito', sans-serif;
+  box-shadow: 0 4px 18px #0005;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.music-button:hover {
+  filter: brightness(1.15);
+}
+
+.scare-face {
+  width: 100%;
+  max-width: 360px;
+  margin: 4px auto 12px;
+}
+
+.scare-face img {
+  display: block;
+  width: 100%;
+  max-height: 390px;
+  object-fit: cover;
+  object-position: center 35%;
+  border-radius: 18px;
+  border: 2px solid #a75bc9;
+  box-shadow: 0 0 25px #b33c7355;
+}
+
+@media (max-width: 480px) {
+  .music-control {
+    right: 10px;
+    bottom: 10px;
+  }
+
+  .music-button {
+    padding: 10px 13px;
+    font-size: 0.8rem;
+  }
+
+  .scare-face img {
+    max-height: 340px;
+  }
+}
+
+/* Halloween surprise opening screen */
+.surprise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background:
+    radial-gradient(ellipse at top, #573078 0%, transparent 60%),
+    linear-gradient(145deg, #170d28, #29143d 55%, #120b20);
+  transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+
+.surprise-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.surprise-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 36px 24px;
+  text-align: center;
+  color: #fff0df;
+  background: rgba(39, 22, 54, 0.92);
+  border: 1px solid #a86bd0;
+  border-radius: 24px;
+  box-shadow: 0 0 40px rgba(174, 91, 226, 0.2);
+}
+
+.surprise-decor {
+  margin-bottom: 18px;
+  font-size: 2rem;
+  letter-spacing: 8px;
+}
+
+.surprise-card h1 {
+  margin-bottom: 14px;
+  color: #ffc078;
+  font-size: clamp(1.7rem, 6vw, 2.2rem);
+  line-height: 1.25;
+}
+
+.surprise-card p {
+  line-height: 1.7;
+}
+
+.open-surprise-button {
+  width: 100%;
+  margin-top: 18px;
+  padding: 15px 18px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #ffad5c, #ff7c78);
+  color: #321735;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #a64b62;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.open-surprise-button:hover {
+  filter: brightness(1.08);
+  transform: translateY(-2px);
+}
+
+.open-surprise-button:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #a64b62;
+}
+
+.surprise-note {
+  margin-top: 22px;
+  margin-bottom: 0;
+  color: #d7b7e8;
+  font-size: 0.8rem;
+}
